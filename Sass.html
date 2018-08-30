@@ -1,0 +1,47 @@
+
+
+<!-- Challenge #6-->
+<h1>Challenge #6</h1>
+<style type='text/sass'>
+  @each $color in blue, black, red {
+    .#{$color}-bg {
+      background-color: $color;
+    }
+  }
+
+  div {
+    height: 200px;
+    width: 200px;
+  }
+</style>
+
+<div class="blue-bg"></div>
+<div class="black-bg"></div>
+<div class="red-bg"></div>
+
+
+<!-- Challenge #7-->
+<h1>Challenge #7</h1>
+<style type='text/sass'>
+  $x: 1;
+  @while $x < 11 {
+    .text-#{$x} {
+      font-size: 5px * $x;
+    }
+    $x: $x + 1;
+  }
+</style>
+
+<p class="text-1">Hello</p>
+<p class="text-2">Hello</p>
+<p class="text-3">Hello</p>
+<p class="text-4">Hello</p>
+<p class="text-5">Hello</p>
+<p class="text-6">Hello</p>
+<p class="text-7">Hello</p>
+<p class="text-8">Hello</p>
+<p class="text-9">Hello</p>
+<p class="text-10">Hello</p>
+
+<!-- Challenge #6-->
+<h1>Challenge #6</h1>
