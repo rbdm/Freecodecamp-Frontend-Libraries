@@ -96,3 +96,184 @@ class ParentComponent extends React.Component {
 };
 
 /* Challenge 10 */
+const TypesOfFruit = () => {
+  return (
+    <div>
+      <h2>Fruits:</h2>
+      <ul>
+        <li>Apples</li>
+        <li>Blueberries</li>
+        <li>Strawberries</li>
+        <li>Bananas</li>
+      </ul>
+    </div>
+  );
+};
+
+const Fruits = () => {
+  return (
+    <div>
+      <TypesOfFruit />
+    </div>
+  );
+};
+
+class TypesOfFood extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Types of Food:</h1>
+        <Fruits />
+      </div>
+    );
+  }
+};
+
+/* Challenge 11 */
+class Fruits extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h2>Fruits:</h2>
+        <NonCitrus />
+        <Citrus />
+      </div>
+    );
+  }
+};
+
+class TypesOfFood extends React.Component {
+  constructor(props) {
+     super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>Types of Food:</h1>
+        <Fruits />
+        <Vegetables />
+      </div>
+    );
+  }
+
+/* Challenge 12 */
+class TypesOfFood extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>Types of Food:</h1>
+        <Fruits />
+        <Vegetables />
+      </div>
+    );
+  }
+};
+ReactDOM.render(<TypesOfFood />, document.getElementById('challenge-node'));
+
+/* Challenge 13 */
+// change code below this line
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return(
+      <div>
+        <h1>My First React Component!</h1>
+      </div>
+    );
+  }
+};
+ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));
+
+/* Challenge 14 */
+const CurrentDate = (props) => {
+  return (
+    <div>
+      { /* change code below this line */ }
+      <p>The current date is: {props.date}</p>
+      { /* change code above this line */ }
+    </div>
+  );
+};
+
+class Calendar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h3>What date is it?</h3>
+        { /* change code below this line */ }
+        <CurrentDate date={Date()} />
+        { /* change code above this line */ }
+      </div>
+    );
+  }
+};
+
+/* Challenge 15 */
+const List= (props) => {
+  { /* change code below this line */ }
+  return <p>{props.tasks.join(', ')}</p>
+  { /* change code above this line */ }
+};
+
+class ToDo extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>To Do Lists</h1>
+        <h2>Today</h2>
+        { /* change code below this line */ }
+        <List tasks={['react FCC', 'nelpon dhika']} />
+        <h2>Tomorrow</h2>
+        <List tasks={['react FCC', 'monster hunter world', 'dateng ke nikahan tito']} />
+        { /* change code above this line */ }
+      </div>
+    );
+  }
+};
+
+/* Challenge 16 */
+
+
+/* Challenge 17 */
+
+
+/* Challenge 18 */
+
+
+/* Challenge 19 */
+
+
+/* Challenge 20 */
+
+
+/* Challenge 21 */
+
+
+/* Challenge 22 */
+
+
+/* Challenge 23 */
+
+
+/* Challenge 24 */
+
+
+/* Challenge 25 */
