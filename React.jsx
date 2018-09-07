@@ -766,19 +766,170 @@ class RenderInput extends React.Component {
 };
 
 /* Challenge 32 */
-/*  */
-
-
+/* Use the Lifecycle Method componentWillMount */
+// called before the render() method, when a component is being mounted to the DOM
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount() {
+    // change code below this line
+    console.log('tes')
+    // change code above this line
+  }
+  render() {
+    return <div />
+  }
+};
 
 /* Challenge 33 */
-/*  */
-
-
+/* Use the Lifecycle Method componentDidMount */
+//setState here will trigger re-render. call API endpoint to retrieve data with this
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeUsers: null
+    };
+  }
+  componentDidMount() {
+    setTimeout( () => {
+      this.setState({
+        activeUsers: 1273
+      });
+    }, 2500);
+  }
+  render() {
+    return (
+      <div>
+        <h1>Active Users: { this.state.activeUsers }</h1>
+      </div>
+    );
+  }
+};
 
 /* Challenge 34 */
-/*  */
-
+/* Add Event Listeners */
+// added in componentDidMount
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: ''
+    };
+    this.handleEnter = this.handleEnter.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+  // change code below this line
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress(this));
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress(this));
+  }
+  // change code above this line
+  handleEnter() {
+    this.setState({
+      message: this.state.message + 'You pressed the enter key! '
+    });
+  }
+  handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      this.handleEnter();
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.message}</h1>
+      </div>
+    );
+  }
+};
 
 
 /* Challenge 35 */
+/* Manage Updates with Lifecycle Methods */
+// there is no advantage to write lifecycle methods as arrow functions
+class Dialog extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillUpdate() {
+    console.log('Component is about to update...');
+  }
+  // change code below this line
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props);
+    console.log(nextProps);
+  }
+  componentDidUpdate() {
+    console.log('component updated');
+  }
+  // change code above this line
+  render() {
+    return <h1>{this.props.message}</h1>
+  }
+};
+
+class Controller extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'First Message'
+    };
+    this.changeMessage = this.changeMessage.bind(this);
+  }
+  changeMessage() {
+    this.setState({
+      message: 'Second Message'
+    });
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.changeMessage}>Update</button>
+        <Dialog message={this.state.message}/>
+      </div>
+    );
+  }
+};
+
+/* Challenge 36 */
+/*  */
+
+
+/* Challenge 37 */
+/*  */
+
+
+/* Challenge 38 */
+/*  */
+
+
+/* Challenge 39 */
+/*  */
+
+
+/* Challenge 40 */
+/*  */
+
+
+/* Challenge 41 */
+/*  */
+
+
+/* Challenge 42 */
+/*  */
+
+
+/* Challenge 43 */
+/*  */
+
+
+/* Challenge 44 */
+/*  */
+
+
+/* Challenge 45 */
 /*  */
