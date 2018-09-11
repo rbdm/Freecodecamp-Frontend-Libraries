@@ -1154,7 +1154,8 @@ class CheckUserAge extends React.Component {
           value={this.state.input}
           onChange={this.handleChange} /><br />
         {
-          /* change code here */
+          this.value >= 18 ?
+          buttonTwo : buttonOne /* change code here */
         }
       </div>
     );
