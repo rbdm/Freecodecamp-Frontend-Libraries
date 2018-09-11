@@ -1154,8 +1154,11 @@ class CheckUserAge extends React.Component {
           value={this.state.input}
           onChange={this.handleChange} /><br />
         {
-          this.value >= 18 ?
-          buttonTwo : buttonOne /* change code here */
+          this.state.userAge >= 18
+          ? buttonTwo
+          : this.state.userAge == ''
+          ? buttonOne
+          : buttonThree /* change code here */
         }
       </div>
     );
@@ -1163,16 +1166,142 @@ class CheckUserAge extends React.Component {
 };
 
 /* Challenge 43 */
-/*  */
+/* Render Conditionally from Props */
+class Results extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <h1>
+      {
+        this.props.fiftyFifty == true
+        ? "You win!"
+        : "You lose!"///// change code here
+      }
+      </h1>
+    )
+  };
+};
 
+class GameOfChance extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 1
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      counter: this.state.counter + 1 //// change code here
+    });
+  }
+  render() {
+    let expression =
+      Math.random() >= 0.5
+      ? true
+      : false
+      ///// change code here
+    return (
+      <div>
+        <button onClick={this.handleClick}>Play Again</button>
+        { /* change code below this line */ }
+        <Results fiftyFifty={expression} />
+        { /* change code above this line */ }
+        <p>{'Turn: ' + this.state.counter}</p>
+      </div>
+    );
+  }
+};
 
 /* Challenge 44 */
-/*  */
-
+/* Change Inline CSS Conditionally Based on Component State */
+class GateKeeper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({ input: event.target.value })
+  }
+  render() {
+    let inputStyle = {
+      border: '1px solid black'
+    };
+    // change code below this line
+    this.state.input.length > 15
+    ? inputStyle = {
+        border: '3px solid red'
+      }
+    : null;
+    // change code above this line
+    return (
+      <div>
+        <h3>Don't Type Too Much:</h3>
+        <input
+          type="text"
+          style={inputStyle}
+          value={this.state.input}
+          onChange={this.handleChange} />
+      </div>
+    );
+  }
+};
 
 /* Challenge 45 */
-/*  */
+/* Use Array.map() to Dynamically Render Elements */
+const textAreaStyles = {
+  width: 235,
+  margin: 5
+};
 
+class MyToDoList extends React.Component {
+  constructor(props) {
+    super(props);
+    // change code below this line
+    this.state = {
+      userInput: '',
+      toDoList: []
+    }
+    // change code above this line
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleSubmit() {
+    const itemsArray = this.state.userInput.split(',');
+    this.setState({
+      toDoList: itemsArray
+    });
+  }
+  handleChange(e) {
+    this.setState({
+      userInput: e.target.value
+    });
+  }
+  render() {
+    const items = this.state.toDoList.map((val, i, arr) => {
+      return <li>{val}</li>
+    }); // change code here
+    return (
+      <div>
+        <textarea
+          onChange={this.handleChange}
+          value={this.state.userInput}
+          style={textAreaStyles}
+          placeholder="Separate Items With Commas" /><br />
+        <button onClick={this.handleSubmit}>Create List</button>
+        <h1>My "To Do" List:</h1>
+        <ul>
+          {items}
+        </ul>
+      </div>
+    );
+  }
+};
 
 /* Challenge 46 */
 /*  */
