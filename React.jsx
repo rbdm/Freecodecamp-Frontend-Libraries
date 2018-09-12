@@ -531,13 +531,13 @@ class MyComponent extends React.Component {
   }
   // change code below this line
   toggleVisibility() {
-    this.state.visibility ?
-      this.setState({
+    this.state.visibility
+    ? this.setState({
         visibility: false
       })
-      : this.setState({
-          visibility: true
-        });
+    : this.setState({
+        visibility: true
+      });
   }
   // change code above this line
   render() {
@@ -1304,12 +1304,92 @@ class MyToDoList extends React.Component {
 };
 
 /* Challenge 46 */
-/*  */
+/* Give Sibling Elements a Unique Key Attribute */
+const frontEndFrameworks = [
+  'React',
+  'Angular',
+  'Ember',
+  'Knockout',
+  'Backbone',
+  'Vue'
+];
 
+function Frameworks() {
+  const renderFrameworks =
+    frontEndFrameworks.map((val, i, arr) => {
+      return <li key={i}>{val}</li>
+    }); //// change code here
+  return (
+    <div>
+      <h1>Popular Front End JavaScript Frameworks</h1>
+      <ul>
+        {renderFrameworks}
+      </ul>
+    </div>
+  );
+};
 
 /* Challenge 47 */
-/*  */
-
+/* Use Array.filter() to Dynamically Filter an Array */
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [
+        {
+          username: 'Jeff',
+          online: true
+        },
+        {
+          username: 'Alan',
+          online: false
+        },
+        {
+          username: 'Mary',
+          online: true
+        },
+        {
+          username: 'Jim',
+          online: false
+        },
+        {
+          username: 'Sara',
+          online: true
+        },
+        {
+          username: 'Laura',
+          online: true
+        }
+      ]
+    }
+  }
+  render() {
+    const usersOnline = this.state.users.filter(username => username.online); /// change code here
+    const renderOnline = usersOnline.map((val, i, arr) => {
+      return <li key={i}>{val.username}</li>
+    }); //// change code here
+    return (
+       <div>
+         <h1>Current Online Users:</h1>
+         <ul>
+           {renderOnline}
+         </ul>
+       </div>
+    );
+  }
+};
 
 /* Challenge 48 */
-/*  */
+/* Render React on the Server with renderToString */
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div/>
+  }
+};
+
+// change code below this line
+ReactDOMServer.renderToString(<App />);
