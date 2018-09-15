@@ -162,12 +162,75 @@ const logoutUser = () => {
 };
 
 /* Challenge 9 */
-/*  */
+/* Register a Store Listener */
+const ADD = 'ADD';
 
+const reducer = (state = 0, action) => {
+  switch(action.type) {
+    case ADD:
+      return state + 1;
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(reducer);
+
+// global count variable:
+let count = 0;
+
+// change code below this line
+store.subscribe(() => (count = count + 1));
+//or store.subscribe(function countUp() {(count = count + 1)});
+// change code above this line
+
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
 
 /* Challenge 10 */
-/*  */
+/* Combine Multiple Reducers */
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
 
+const counterReducer = (state = 0, action) => {
+  switch(action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+
+const authReducer = (state = {authenticated: false}, action) => {
+  switch(action.type) {
+    case LOGIN:
+      return {
+        authenticated: true
+      }
+    case LOGOUT:
+      return {
+        authenticated: false
+      }
+    default:
+      return state;
+  }
+};
+
+const rootReducer = Redux.combineReducers({
+  count: counterReducer,
+  auth: authReducer
+});// define the root reducer here
+
+const store = Redux.createStore(rootReducer);
 
 /* Challenge 11 */
 /*  */
