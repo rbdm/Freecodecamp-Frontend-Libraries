@@ -501,9 +501,16 @@ class MyComponent extends React.Component {
     // change code above this line
   }
   addItem() {
-    this.setState({
+    // not instructed to be changed, but refactored anyway
+    /* this.setState({
       itemCount: this.state.itemCount + 1
+    });*/
+    this.setState((prevState, props) => {
+      return {
+        itemCount: prevState.itemCount + 1
+      }
     });
+    // refactor setState to use prevState instead of directly modifying this.state
   }
   render() {
     return (
@@ -573,15 +580,20 @@ class Counter extends React.Component {
     // change code above this line
   }
   // change code below this line
+  // -- refactored to use prevState instead of directly modifying this.state
   increment() {
-    this.setState({
-      count: this.state.count + 1
-    })
+    this.setState((prevState, props) => {
+      return {
+        count: prevState.count + 1
+      }
+    });
   }
   decrement() {
-    this.setState({
-      count: this.state.count - 1
-    })
+    this.setState((prevState, props) => {
+      return {
+        count: prevState.count - 1
+      }
+    });
   }
   reset() {
     this.setState({
@@ -689,7 +701,7 @@ class MyApp extends React.Component {
   render() {
     return (
        <div>
-         <Navbar name={this.state.name} />
+         <Navbar name = {this.state.name} />
        </div>
     );
   }
