@@ -381,11 +381,28 @@ const store = Redux.createStore(immutableReducer);
 
 /* Challenge 15 */
 /* Use the Spread Operator on Arrays */
+const immutableReducer = (state = ['Do not mutate state!'], action) => {
+  switch(action.type) {
+    case 'ADD_TO_DO':
+      // don't mutate state here or the tests will fail
+      return [...state].concat(action.todo);
+      break;
+    default:
+      return state;
+  }
+};
 
+const addToDo = (todo) => {
+  return {
+    type: 'ADD_TO_DO',
+    todo
+  }
+}
+
+const store = Redux.createStore(immutableReducer);
 
 /* Challenge 16 */
-/*  */
-
+/* Remove an Item from an Array */
 
 /* Challenge 17 */
 /*  */
