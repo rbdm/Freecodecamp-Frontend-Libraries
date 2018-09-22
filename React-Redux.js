@@ -51,7 +51,11 @@ class DisplayMessages extends React.Component {
         <input value={this.state.input} onChange = {this.handleChange} />
         <button onClick = {this.submitMessage} >submit</button>
         <ul>
-          <li>{this.state.messages}</li>
+         {this.state.messages.map( (message, idx) = > {
+          return (
+           <li key ="idx">{this.state.messages}</li>
+          )
+         })}
         </ul>
         { /* change code above this line */ }
       </div>
@@ -85,8 +89,8 @@ const messageReducer = (state = defaultState, action) => {
 
 const store = Redux.createStore(messageReducer);
 
-/* Challenge  */
-/*  */
+/* Challenge 4 */
+/* Use Provider to Connect Redux to React */
 
 
 /* Challenge  */
