@@ -53,7 +53,7 @@ class DisplayMessages extends React.Component {
         <ul>
          {this.state.messages.map( (message, idx) = > {
           return (
-           <li key ="idx">{this.state.messages}</li>
+           <li key ="idx">{message}</li>
           )
          })}
         </ul>
@@ -91,135 +91,190 @@ const store = Redux.createStore(messageReducer);
 
 /* Challenge 4 */
 /* Use Provider to Connect Redux to React */
+// Redux Code:
+const ADD = 'ADD';
+
+const addMessage = (message) => {
+  return {
+    type: ADD,
+    message
+  }
+};
+
+const defaultState = [];
+
+const messageReducer = (state = defaultState, action) => {
+  switch (action.type) {
+    case ADD:
+      return [
+        ...state,
+        action.message
+      ];
+    default:
+      return state;
+  }
+};
 
 
-/* Challenge  */
+
+const store = Redux.createStore(messageReducer);
+
+// React Code:
+
+class DisplayMessages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      messages: []
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.submitMessage = this.submitMessage.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      input: event.target.value
+    });
+  }
+  submitMessage() {
+    const currentMessage = this.state.input;
+    this.setState({
+      input: '',
+      messages: this.state.messages.concat(currentMessage)
+    });
+  }
+  render() {
+    return (
+      <div>
+        <h2>Type in a new Message:</h2>
+        <input
+          value={this.state.input}
+          onChange={this.handleChange}/><br/>
+        <button onClick={this.submitMessage}>Submit</button>
+        <ul>
+          {this.state.messages.map( (message, idx) => {
+              return (
+                 <li key={idx}>{message}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
+    );
+  }
+};
+
+const Provider = ReactRedux.Provider;
+
+class AppWrapper extends React.Component {
+  // render the Provider here
+  render() {
+    return (
+      <Provider store={store}>
+        <DisplayMessages />
+      </Provider>
+    )
+  }
+  // change code above this line
+};
+
+/* Challenge 5 */
+/* Map State to Props */
+const state = [];
+
+// change code below this line
+const mapStateToProps = (state) => {
+  return {
+    messages: state
+  }
+}
+
+/* Challenge 6 */
+/* Map Dispatch to Props */
+const addMessage = (message) => {
+  return {
+    type: 'ADD',
+    message: message
+  }
+};
+
+// change code below this line
+const mapDispatchToProps = (dispatch) => {
+  return {
+    submitNewMessage: (message) => {
+      dispatch(addMessage(message))
+    }
+  }
+}
+
+/* Challenge 7 */
+/* Connect Redux to React */
+const addMessage = (message) => {
+  return {
+    type: 'ADD',
+    message: message
+  }
+};
+
+const mapStateToProps = (state) => {
+  return {
+    messages: state
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    submitNewMessage: (message) => {
+      dispatch(addMessage(message));
+    }
+  }
+};
+
+class Presentational extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <h3>This is a Presentational Component</h3>
+  }
+};
+
+const connect = ReactRedux.connect;
+// change code below this line
+const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps) (Presentational)
+
+
+/* Challenge 8 */
 /*  */
 
 
-/* Challenge  */
+/* Challenge 9 */
 /*  */
 
 
-/* Challenge  */
+/* Challenge 10 */
 /*  */
 
 
-/* Challenge  */
+/* Challenge 12 */
 /*  */
 
 
-/* Challenge  */
+/* Challenge 13 */
 /*  */
 
 
-/* Challenge  */
+/* Challenge 14 */
 /*  */
 
 
-/* Challenge  */
+/* Challenge 15 */
 /*  */
 
 
-/* Challenge  */
+/* Challenge 16 */
 /*  */
 
 
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
-/*  */
-
-
-/* Challenge  */
+/* Challenge 1 */
 /*  */
